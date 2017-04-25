@@ -1,0 +1,19 @@
+# don't show the copyright notice during startup
+startup_message off
+
+# define a bigger scrollback, default is 100 lines
+defscrollback 8192
+
+# - change the encoding used to utf-8
+# - initial setting is on if screen was started with -U, otherwise off
+defutf8 on
+
+# after erase/insert/scroll/clear operation, use default background color and
+# not current background color
+defbce off
+
+# - in "man screen", search for "attrcolor" and "STRING ESCAPES"
+# - use bright colors for bold text
+# - for some reason, this makes vim display colors properly within screen in
+#   freebsd while logged in through ssh
+attrcolor b ".I"

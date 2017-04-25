@@ -1,0 +1,2 @@
+export DISPLAY=:0.0
+eval "$(ssh-agent -s)"
