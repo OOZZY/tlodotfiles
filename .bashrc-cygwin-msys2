@@ -1,2 +1,7 @@
+# "ssh-agent -s" prints to stdout the Bourne shell commands to execute to setup
+# an agent
 eval "$(ssh-agent -s)"
+
+# - ssh-add adds private key identities to the authentication agent ssh-agent
+# - without arguments, it adds the default files including ~/.ssh/id_rsa
 ssh-add
