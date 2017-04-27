@@ -1,0 +1,4 @@
+# - source /etc/bash.bashrc if it exists
+# - usually, /etc/profile already does this
+#   - search for "bashrc" in /etc/profile to check if it does
+[ -f "/etc/bash.bashrc" ] && . "/etc/bash.bashrc"
