@@ -1,0 +1,9 @@
+# activate bash completion
+[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
+  source /usr/local/share/bash-completion/bash_completion.sh
+
+# let man use the less pager
+alias man='man -P "less -sRi"'
+
+# for freebsd's ls, -G enables colorized output
+alias ls='ls -G'
