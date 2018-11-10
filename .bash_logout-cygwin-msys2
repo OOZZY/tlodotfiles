@@ -1,1 +1,1 @@
-killall ssh-agent
+ssh-agent -k
