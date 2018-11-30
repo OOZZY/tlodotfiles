@@ -211,6 +211,19 @@ set virtualedit=all
 " - prevent searches from wrapping around the end of the file
 set nowrapscan
 
+" - help 'tags'
+" - help tags-option
+" - help file-searching
+" - help +path_extra
+" - requires +path_extra
+" - the tags option contains a comma separated list of files to look for tags
+" - if an entry in the list starts with './', vim will look for the file in the
+"   directory of the currently opened file
+"   - otherwise, will look for the file in vim's working directory
+" - if an entry in the list ends with a ';', does an upward search (will try to
+"   find the file in parent directory then grandparent and so on)
+set tags+=./tags;
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
