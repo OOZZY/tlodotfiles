@@ -505,6 +505,7 @@ endfunction
 " - help 'guifont'
 " - help len()
 " - help get()
+" - help 'guioptions'
 if has("gui_running")
   " the following fonts have the same size in vim in ubuntu 16.04.1
   let guiFonts = [
@@ -533,4 +534,8 @@ if has("gui_running")
     " following font name format is specific to win32
     set guifont=Consolas:h9:cANSI " Consolas, height: 9, character set: ANSI
   endif
+
+  " remove menu bar and toolbar
+  set guioptions-=m
+  set guioptions-=T
 endif
