@@ -224,6 +224,11 @@ set nowrapscan
 "   find the file in parent directory then grandparent and so on)
 set tags+=./tags;
 
+" - help 'shell'
+if has("win32")
+  set shell=powershell
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
