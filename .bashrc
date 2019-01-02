@@ -26,3 +26,15 @@ export HISTSIZE=10000
 # - behavior with --color=auto is documented in "man ls" but not in "man grep"
 # - for some systems, this alias is already set
 alias grep='grep --color=auto'
+
+if [ "$(uname -s)" = "FreeBSD" ]; then
+  # activate bash completion
+  [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
+    source /usr/local/share/bash-completion/bash_completion.sh
+
+  # let man use the less pager
+  alias man='man -P "less -sRi"'
+
+  # for freebsd's ls, -G enables colorized output
+  alias ls='ls -G'
+fi
