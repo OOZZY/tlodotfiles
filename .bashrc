@@ -37,4 +37,8 @@ if [ "$(uname -s)" = "FreeBSD" ]; then
 
   # for freebsd's ls, -G enables colorized output
   alias ls='ls -G'
+
+  # instead of /usr/bin/grep, use the grep from the gnugrep package which is
+  # newer and supports more features
+  alias grep='/usr/local/bin/grep --color=auto'
 fi
