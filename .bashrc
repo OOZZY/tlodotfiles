@@ -27,7 +27,28 @@ export HISTSIZE=10000
 # - for some systems, this alias is already set
 alias grep='grep --color=auto'
 
-if [ "$(uname -o)" = "FreeBSD" ]; then
+OS="$(uname -o)"
+
+if [ "${OS}" = "Cygwin" ]; then
+  # - for the regular Cygwin terminal after installing Cygwin/X
+  #   - after installing Cygwin/X, system tray "X applications menu" icon
+  #     -> System Tools -> Cygwin Terminal will have this but the regular Cygwin
+  #     terminal will not
+  # - DISPLAY is the only mandatory environment variable for X and it should be
+  #   set to the display name of an X server
+  #   - X server display names have the form hostname:displaynumber.screennumber
+  #   - :0.0 means localhost, display 0, screen 0
+  export DISPLAY=:0.0
+fi
+
+if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" ]; then
+  # - "ssh-agent -s" prints to stdout the Bourne shell commands to execute to
+  #   setup an agent
+  # - "ssh-add" won't work if ssh-agent isn't running, so run ssh-agent
+  eval "$(ssh-agent -s)"
+fi
+
+if [ "${OS}" = "FreeBSD" ]; then
   # activate bash completion
   [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
     source /usr/local/share/bash-completion/bash_completion.sh

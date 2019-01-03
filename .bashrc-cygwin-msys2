@@ -1,3 +1,0 @@
-# "ssh-agent -s" prints to stdout the Bourne shell commands to execute to setup
-# an agent
-eval "$(ssh-agent -s)"

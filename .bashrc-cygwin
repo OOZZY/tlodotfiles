@@ -1,9 +1,0 @@
-# - for the regular Cygwin terminal after installing Cygwin/X
-#   - after installing Cygwin/X, system tray "X applications menu" icon
-#     -> System Tools -> Cygwin Terminal will do this but the regular Cygwin
-#     terminal will not
-# - DISPLAY is the only mandatory environment variable for X and it should be
-#   set to the display name of an X server
-#   - X server display names have the form hostname:displaynumber.screennumber
-#   - :0.0 means localhost, display 0, screen 0
-export DISPLAY=:0.0
