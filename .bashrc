@@ -27,7 +27,7 @@ export HISTSIZE=10000
 # - for some systems, this alias is already set
 alias grep='grep --color=auto'
 
-if [ "$(uname -s)" = "FreeBSD" ]; then
+if [ "$(uname -o)" = "FreeBSD" ]; then
   # activate bash completion
   [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
     source /usr/local/share/bash-completion/bash_completion.sh
