@@ -32,13 +32,15 @@ assemble_config_file() {
 
 set -x
 
-cp .gitconfig "${HOME}"
 cp .screenrc "${HOME}"
 cp -R .ssh "${HOME}"
 cp -R .vimrc .vim .fonts "${HOME}"
 
 backup_config_file "${HOME}/.bashrc"
 assemble_config_file .bashrc "${HOME}/.bashrc"
+
+backup_config_file "${HOME}/.gitconfig"
+assemble_config_file .gitconfig "${HOME}/.gitconfig"
 
 OS="$(uname -o)"
 
