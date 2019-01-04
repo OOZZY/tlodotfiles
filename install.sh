@@ -8,7 +8,7 @@ backup_config_file() {
 
   if [ ! -f "${ORIGINAL}" ] && [ ! -f "${NO_ORIGINAL}" ]; then
     if [ -f "${FILE}" ]; then
-      cp "${FILE}" "${ORIGINAL}"
+      cp -a "${FILE}" "${ORIGINAL}"
     else
       touch "${NO_ORIGINAL}"
     fi
