@@ -229,6 +229,10 @@ if has("win32")
   set shell=powershell
 endif
 
+" - help 'noswapfile'
+" - do not create swap files
+set noswapfile
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
