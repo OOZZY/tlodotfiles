@@ -131,10 +131,6 @@ set lazyredraw
 "   (if the match is on screen)
 set showmatch
 
-" - help 'colorcolumn'
-" - highlight columns 73 and 81
-set colorcolumn=73,81
-
 " - help 'encoding'
 " - set character encoding to utf-8
 set encoding=utf-8
@@ -354,6 +350,12 @@ vnoremap k gk
 nnoremap <c-f> <c-d>
 nnoremap <c-b> <c-u>
 
+" - help gt
+" - help gT
+" - go to next/previous tab
+nmap <leader>f gt
+nmap <leader>b gT
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -422,6 +424,21 @@ function! <SID>JumpToLastKnownPosition()
   endif
 endfunction
 
+function! <SID>ApplySettingsForSourceCode()
+  " - help 'colorcolumn'
+  " - highlight column 81
+  set colorcolumn=81
+
+  set textwidth=80
+endfunction
+
+function! <SID>ApplySettingsForGitCommitMessage()
+  " - highlight columns 51 and 73
+  set colorcolumn=51,73
+
+  set textwidth=72
+endfunction
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocommands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -440,6 +457,8 @@ endfunction
 "   filetype
 "   - this requires the autocommand feature
 if has("autocmd")
+  filetype on
+
   " - this makes indentation behave differently for different file types
   " filetype plugin indent on
 
@@ -470,6 +489,17 @@ if has("autocmd")
   " - BufReadPost specifies that the command executes when starting to edit a
   "   new buffer, after reading the file
   autocmd BufReadPost * call <SID>JumpToLastKnownPosition()
+
+  " - The FileType event is triggered when the 'filetype' option has been set.
+  " - For the FileType event, the pattern is matched agains the filetype
+  "   instead of the filename.
+  autocmd FileType c,cmake,cpp,cs,java,javascript,python,ruby,sh,vim
+    \ call <SID>ApplySettingsForSourceCode()
+
+  autocmd FileType gitconfig,json,markdown,screen,sshconfig
+    \ call <SID>ApplySettingsForSourceCode()
+
+  autocmd FileType gitcommit call <SID>ApplySettingsForGitCommitMessage()
 
   augroup END
 endif

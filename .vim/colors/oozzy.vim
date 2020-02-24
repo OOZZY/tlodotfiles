@@ -279,8 +279,8 @@ call s:Highlight("DiffText",
 
 " IncSearch. 'incsearch' highlighting
 call s:Highlight("IncSearch",
-  \ "DarkMagenta", "White", "bold",
-  \ s:DarkMagenta, s:White, "bold")
+  \ "DarkGreen", "White", "bold",
+  \ s:DarkGreen, s:White, "bold")
 
 " LineNr. Line number for ":number" and ":#" commands, and when 'number' or
 " 'relativenumber' option is set.
@@ -296,13 +296,28 @@ call s:Highlight("CursorLineNr",
 
 " Search. Last search pattern highlighting (see 'hlsearch').
 call s:Highlight("Search",
-  \ "DarkGreen", "White", "bold",
-  \ s:DarkGreen, s:White, "bold")
+  \ "DarkMagenta", "White", "bold",
+  \ s:DarkMagenta, s:White, "bold")
 
 " Visual. Visual mode selection
 call s:Highlight("Visual",
   \ "DarkBlue", "White", "bold",
   \ s:DarkBlue, s:White, "bold")
+
+" TabLine. tab pages line, not active tab page label
+call s:Highlight("TabLine",
+  \ "bg", "Yellow", "bold",
+  \ "bg", s:Yellow, "bold")
+
+" TabLineFill. tab pages line, where there are no labels
+call s:Highlight("TabLineFill",
+  \ "bg", "fg", "bold",
+  \ "bg", "fg", "bold")
+
+" TabLineSel. tab pages line, active tab page label
+call s:Highlight("TabLineSel",
+  \ "bg", "Red", "bold",
+  \ "bg", s:Red, "bold")
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TODO
@@ -363,9 +378,6 @@ call s:Highlight("Visual",
 " StatusLineNC. status lines of not-current windows
 "   Note: if this is equal to "StatusLine" Vim will use "^^^" in
 "   the status line of the current window.
-" TabLine. tab pages line, not active tab page label
-" TabLineFill. tab pages line, where there are no labels
-" TabLineSel. tab pages line, active tab page label
 " Title. titles for output from ":set all", ":autocmd" etc.
 " VisualNOS. Visual mode selection when vim is "Not Owning the Selection".
 "   Only X11 Gui's |gui-x11| and |xterm-clipboard| supports this.
