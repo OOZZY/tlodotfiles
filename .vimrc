@@ -229,6 +229,30 @@ endif
 " - do not create swap files
 set noswapfile
 
+" - help g:netrw_liststyle
+" - Wide listing. The next style is 3: tree style listing.
+let g:netrw_liststyle = 2
+
+" - help g:netrw_browse_split
+" - Open in previous window.
+let g:netrw_browse_split = 4
+
+" - help g:netrw_winsize
+" - Set initial size of new windows to 25%.
+" - For :Sexplore, this affects height of new window.
+" - For :Vexplore, this affects width of new window.
+let g:netrw_winsize = 25
+
+" - help g:netrw_altv
+" - Opening file with 'v' opens new vertical split window to the right instead
+"   of to the left.
+let g:netrw_altv = 1
+
+" - help g:netrw_alto
+" - Opening file with 'o' opens new horizontal split window below instead of
+"   above.
+let g:netrw_alto = 1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
