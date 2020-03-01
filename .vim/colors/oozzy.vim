@@ -47,26 +47,47 @@ let g:colors_name = "oozzy"
 " - help highlight-guibg
 " - help highlight-guifg
 " - highlight <group-name> <key>=<arg>...
+" - help cterm-colors
+" - help gui-colors
 
 " cterm:
 " - following cterm* settings are for 8-color terminals
 " - following cterm* settings use only color names and not color numbers
-" - note many terminals can't mix attributes with coloring. use only one of
+" - note some terminals can't mix attributes with coloring. use only one of
 "   cterm= OR ctermfg= OR ctermbg=
-" - note that <number>* colors only apply to foreground colors and not
-"   background colors
+" - for NR-8 color numbers, the '*' indicates that the bold attribute is set for
+"   ctermfg
+"   - in many 8-color terminals, causes the bright colors to appear
+"   - doesn't work for background colors
 "   - each of the 8 colors have a dark and a light version. the background
-"     color can be one of only the dark colors
-" - Dark        | Light
-"   ----------------------
-"   Black       | DarkGray
-"   DarkBlue    | Blue
-"   DarkGreen   | Green
-"   DarkCyan    | Cyan
-"   DarkRed     | Red
-"   DarkMagenta | Magenta
-"   Brown       | Yellow
-"   LightGray   | White
+"     color can only be a dark color
+" - ----------------------------------------+-------------------------------
+"   Dark Colors                             | Light Colors
+"   Name                      (NR-16, NR-8) | Name             (NR-16, NR-8)
+"   ----------------------------------------+-------------------------------
+"   Black                            (0, 0) | DarkGray, DarkGrey    (8 , 0*)
+"   DarkBlue                         (1, 4) | Blue, LightBlue       (9 , 4*)
+"   DarkGreen                        (2, 2) | Green, LightGreen     (10, 2*)
+"   DarkCyan                         (3, 6) | Cyan, LightCyan       (11, 6*)
+"   DarkRed                          (4, 1) | Red, LightRed         (12, 1*)
+"   DarkMagenta                      (5, 5) | Magenta, LightMagenta (13, 5*)
+"   Brown, DarkYellow                (6, 3) | Yellow, LightYellow   (14, 3*)
+"   LightGray, LightGrey, Gray, Grey (7, 7) | White                 (15, 7*)
+"   ----------------------------------------+-------------------------------
+" - the same table but sorted by NR-8 instead of NR-16
+"   ----------------------------------------+-------------------------------
+"   Dark Colors                             | Light Colors
+"   Name                      (NR-16, NR-8) | Name             (NR-16, NR-8)
+"   ----------------------------------------+-------------------------------
+"   Black                            (0, 0) | DarkGray, DarkGrey    (8 , 0*)
+"   DarkRed                          (4, 1) | Red, LightRed         (12, 1*)
+"   DarkGreen                        (2, 2) | Green, LightGreen     (10, 2*)
+"   Brown, DarkYellow                (6, 3) | Yellow, LightYellow   (14, 3*)
+"   DarkBlue                         (1, 4) | Blue, LightBlue       (9 , 4*)
+"   DarkMagenta                      (5, 5) | Magenta, LightMagenta (13, 5*)
+"   DarkCyan                         (3, 6) | Cyan, LightCyan       (11, 6*)
+"   LightGray, LightGrey, Gray, Grey (7, 7) | White                 (15, 7*)
+"   ----------------------------------------+-------------------------------
 " - ctermfg=White cterm=NONE. foreground text will be LightGray and not bold
 " - ctermfg=White cterm=bold. foreground text will be White and bold
 " - ctermfg=LightGray cterm=NONE. foreground text will be LightGray and not bold
@@ -83,11 +104,26 @@ let g:colors_name = "oozzy"
 " - example: ctermbg=Black ctermfg=DarkGray cterm=bold
 "   - background will be black and foreground text will be dark gray
 "   - foreground can be seen
+" - note the actual color that is used in the terminal is ultimately determined
+"   by the color palette of the terminal emulator
+"   - in gnome-terminal, the color palette entry numbers seem to correspond with
+"     the NR-8 numbers, however the '*' colors start with 8 and go up to 15
+"     - palette entry 0 is Black
+"     - palette entry 1 is DarkRed
+"     - palette entry 7 is LightGray
+"     - palette entry 8 is DarkGray
+"     - palette entry 9 is Red
+"     - palette entry 15 is White
+"   - for example, if ctermfg=DarkGray, the foreground color used in
+"     gnome-terminal will be whatever color is set for palette entry 8 and it
+"     won't necessarily be dark gray
 
 " gui:
 " - following gui* settings use only color numbers and not color names
 " - for each syntax/highlight group, the gui colors match the cterm colors
 "   - exceptions: Cursor, CursorColumn, CursorLine
+" - the cterm color names listed above are also available as gui color names on
+"   most systems
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color palettes
@@ -96,43 +132,83 @@ let g:colors_name = "oozzy"
 " - color palette of konsole in linux mint 17.x kde
 "   - retrieved by taking screenshots and color picking with gimp
 " - possible background colors (can use in background and foreground):
-" let s:Black = "#000000"
-" let s:DarkBlue = "#1818b2"
-" let s:DarkGreen = "#18b218"
-" let s:DarkCyan = "#18b2b2"
-" let s:DarkRed = "#b21818"
+" let s:Black       = "#000000"
+" let s:DarkBlue    = "#1818b2"
+" let s:DarkGreen   = "#18b218"
+" let s:DarkCyan    = "#18b2b2"
+" let s:DarkRed     = "#b21818"
 " let s:DarkMagenta = "#b218b2"
-" let s:Brown = "#b26818"
-" let s:LightGray = "#b2b2b2"
+" let s:Brown       = "#b26818"
+" let s:LightGray   = "#b2b2b2"
 " - possible foreground colors (can use in foreground only):
-" let s:DarkGray = "#686868"
-" let s:Blue = "#4975ae"
-" let s:Green = "#8ae234"
-" let s:Cyan = "#49dddd"
-" let s:Red = "#ff5454"
-" let s:Magenta = "#b03ab0"
-" let s:Yellow = "#ffff54"
-" let s:White = "#ffffff"
+" let s:DarkGray    = "#686868"
+" let s:Blue        = "#4975ae"
+" let s:Green       = "#8ae234"
+" let s:Cyan        = "#49dddd"
+" let s:Red         = "#ff5454"
+" let s:Magenta     = "#b03ab0"
+" let s:Yellow      = "#ffff54"
+" let s:White       = "#ffffff"
 
 " - xterm color palette scheme of gnome-terminal in ubuntu 16.04.1
 " - possible background colors (can use in background and foreground):
-let s:Black = "#000000"
-let s:DarkRed = "#CD0000"
-let s:DarkGreen = "#00CD00"
-let s:Brown = "#CDCD00"
-let s:DarkBlue = "#1E90FF"
-let s:DarkMagenta = "#CD00CD"
-let s:DarkCyan = "#00CDCD"
-let s:LightGray = "#E5E5E5"
+" let s:Black       = "#000000"
+" let s:DarkRed     = "#CD0000"
+" let s:DarkGreen   = "#00CD00"
+" let s:Brown       = "#CDCD00"
+" let s:DarkBlue    = "#1E90FF"
+" let s:DarkMagenta = "#CD00CD"
+" let s:DarkCyan    = "#00CDCD"
+" let s:LightGray   = "#E5E5E5"
 " - possible foreground colors (can use in foreground only):
-let s:DarkGray = "#4C4C4C"
-let s:Red = "#FF0000"
-let s:Green = "#00FF00"
-let s:Yellow = "#FFFF00"
-let s:Blue = "#4682B4"
-let s:Magenta = "#FF00FF"
-let s:Cyan = "#00FFFF"
-let s:White = "#FFFFFF"
+" let s:DarkGray    = "#4C4C4C"
+" let s:Red         = "#FF0000"
+" let s:Green       = "#00FF00"
+" let s:Yellow      = "#FFFF00"
+" let s:Blue        = "#4682B4"
+" let s:Magenta     = "#FF00FF"
+" let s:Cyan        = "#00FFFF"
+" let s:White       = "#FFFFFF"
+
+" - "XTerm" color palette scheme of GNOME Terminal in Ubuntu 19.10.
+" - Possible background colors (can use in background and foreground):
+let s:Black       = "#000000"
+let s:DarkRed     = "#CD0000"
+let s:DarkGreen   = "#00CD00"
+let s:Brown       = "#CDCD00"
+let s:DarkBlue    = "#0000EE"
+let s:DarkMagenta = "#CD00CD"
+let s:DarkCyan    = "#00CDCD"
+let s:LightGray   = "#E5E5E5"
+" - Possible foreground colors (can use in foreground only):
+let s:DarkGray    = "#7F7F7F"
+let s:Red         = "#FF0000"
+let s:Green       = "#00FF00"
+let s:Yellow      = "#FFFF00"
+let s:Blue        = "#5C5CFF"
+let s:Magenta     = "#FF00FF"
+let s:Cyan        = "#00FFFF"
+let s:White       = "#FFFFFF"
+
+" - "Linux console" color palette scheme of GNOME Terminal in Ubuntu 19.10.
+" - Possible background colors (can use in background and foreground):
+" let s:Black       = "#000000"
+" let s:DarkRed     = "#AA0000"
+" let s:DarkGreen   = "#00AA00"
+" let s:Brown       = "#AA5500"
+" let s:DarkBlue    = "#0000AA"
+" let s:DarkMagenta = "#AA00AA"
+" let s:DarkCyan    = "#00AAAA"
+" let s:LightGray   = "#AAAAAA"
+" - Possible foreground colors (can use in foreground only):
+" let s:DarkGray    = "#555555"
+" let s:Red         = "#FF5555"
+" let s:Green       = "#55FF55"
+" let s:Yellow      = "#FFFF55"
+" let s:Blue        = "#5555FF"
+" let s:Magenta     = "#FF55FF"
+" let s:Cyan        = "#55FFFF"
+" let s:White       = "#FFFFFF"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " functions
