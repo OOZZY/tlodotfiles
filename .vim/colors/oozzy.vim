@@ -395,6 +395,11 @@ call s:Highlight("TabLineSel",
   \ "bg", "Red", "bold",
   \ "bg", s:Red, "bold")
 
+" Folded. line used for closed folds
+call s:Highlight("Folded",
+  \ "bg", "Blue", "bold",
+  \ "bg", s:Blue, "bold")
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TODO
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -419,7 +424,6 @@ call s:Highlight("TabLineSel",
 " Directory. directory names (and other special names in listings)
 " ErrorMsg. error messages on the command line
 " VertSplit. the column separating vertically split windows
-" Folded. line used for closed folds
 " FoldColumn. 'foldcolumn'
 " SignColumn. column where |signs| are displayed
 " MatchParen. The character under the cursor or just before it, if it
