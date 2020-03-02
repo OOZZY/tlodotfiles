@@ -335,23 +335,23 @@ call s:Highlight("CursorLine",
 
 " DiffAdd. diff mode: Added line |diff.txt|
 call s:Highlight("DiffAdd",
-  \ "DarkBlue", "White", "bold",
-  \ s:DarkBlue, s:White, "bold")
-
-" DiffChange. diff mode: Changed line |diff.txt|
-call s:Highlight("DiffChange",
   \ "DarkGreen", "White", "bold",
   \ s:DarkGreen, s:White, "bold")
 
+" DiffChange. diff mode: Changed line |diff.txt|
+call s:Highlight("DiffChange",
+  \ "DarkBlue", "White", "bold",
+  \ s:DarkBlue, s:White, "bold")
+
 " DiffDelete. diff mode: Deleted line |diff.txt|
 call s:Highlight("DiffDelete",
-  \ "DarkCyan", "White", "bold",
-  \ s:DarkCyan, s:White, "bold")
+  \ "DarkMagenta", "White", "bold",
+  \ s:DarkMagenta, s:White, "bold")
 
 " DiffText. diff mode: Changed text within a changed line |diff.txt|
 call s:Highlight("DiffText",
-  \ "DarkMagenta", "White", "bold",
-  \ s:DarkMagenta, s:White, "bold")
+  \ "DarkCyan", "White", "bold",
+  \ s:DarkCyan, s:White, "bold")
 
 " IncSearch. 'incsearch' highlighting
 call s:Highlight("IncSearch",
