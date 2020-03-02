@@ -400,6 +400,11 @@ call s:Highlight("Folded",
   \ "bg", "Blue", "bold",
   \ "bg", s:Blue, "bold")
 
+" Directory. directory names (and other special names in listings)
+call s:Highlight("Directory",
+  \ "bg", "Blue", "bold",
+  \ "bg", s:Blue, "bold")
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TODO
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -421,7 +426,6 @@ call s:Highlight("Folded",
 " Conceal. placeholder characters substituted for concealed
 "   text (see 'conceallevel')
 " CursorIM. like Cursor, but used when in IME mode |CursorIM|
-" Directory. directory names (and other special names in listings)
 " ErrorMsg. error messages on the command line
 " VertSplit. the column separating vertically split windows
 " FoldColumn. 'foldcolumn'
