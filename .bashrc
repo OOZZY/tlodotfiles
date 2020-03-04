@@ -42,10 +42,17 @@ if [ "${OS}" = "Cygwin" ]; then
 fi
 
 if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" ]; then
-  # - "ssh-agent -s" prints to stdout the Bourne shell commands to execute to
-  #   setup an agent
-  # - "ssh-add" won't work if ssh-agent isn't running, so run ssh-agent
-  eval "$(ssh-agent -s)"
+  if [ -z "$(ps aux | grep ssh-agent)" ]; then
+    # - "ssh-agent -s" prints to stdout the Bourne shell commands to execute to
+    #   setup an agent
+    # - "ssh-add" won't work if ssh-agent isn't running, so run ssh-agent
+    eval "$(ssh-agent -s)"
+    echo ${SSH_AUTH_SOCK} > "${HOME}/.ssh-auth-sock"
+    echo ${SSH_AGENT_PID} > "${HOME}/.ssh-agent-pid"
+  else
+    export SSH_AUTH_SOCK=$(cat "${HOME}/.ssh-auth-sock")
+    export SSH_AGENT_PID=$(cat "${HOME}/.ssh-agent-pid")
+  fi
 fi
 
 if [ "${OS}" = "FreeBSD" ]; then
