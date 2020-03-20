@@ -47,6 +47,11 @@ OS="$(uname -o)"
 if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" ]; then
   backup_config_file "${HOME}/.bash_logout"
   assemble_config_file .bash_logout "${HOME}/.bash_logout"
+
+  cp .vimrc "${USERPROFILE}/_vimrc"
+
+  mkdir -p "${USERPROFILE}/vimfiles"
+  cp -R .vim/* "${USERPROFILE}/vimfiles"
 fi
 
 if [ "${OS}" = "FreeBSD" ]; then
