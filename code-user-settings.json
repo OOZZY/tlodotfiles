@@ -4,5 +4,8 @@
     "editor.rulers": [80],
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "editor.fontSize": 12
+    "editor.fontSize": 12,
+    "[go]": {
+        "editor.tabSize": 8
+    }
 }

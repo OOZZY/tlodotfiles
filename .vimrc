@@ -456,6 +456,14 @@ function! <SID>ApplySettingsForSourceCode()
   set textwidth=80
 endfunction
 
+function! <SID>ApplySettingsForGo()
+  " tab/indent width 8, use tabs and spaces
+  set noexpandtab
+  set tabstop=8
+  set softtabstop=8
+  set shiftwidth=8
+endfunction
+
 function! <SID>ApplySettingsForGitCommitMessage()
   " - highlight columns 51 and 73
   set colorcolumn=51,73
@@ -517,12 +525,13 @@ if has("autocmd")
   " - The FileType event is triggered when the 'filetype' option has been set.
   " - For the FileType event, the pattern is matched agains the filetype
   "   instead of the filename.
-  autocmd FileType c,cmake,cpp,cs,java,javascript,python,ruby,sh,vim
+  autocmd FileType c,cmake,cpp,cs,go,java,javascript,python,ruby,sh,vim
     \ call <SID>ApplySettingsForSourceCode()
 
   autocmd FileType gitconfig,json,markdown,screen,sshconfig
     \ call <SID>ApplySettingsForSourceCode()
 
+  autocmd FileType go call <SID>ApplySettingsForGo()
   autocmd FileType gitcommit call <SID>ApplySettingsForGitCommitMessage()
 
   augroup END
