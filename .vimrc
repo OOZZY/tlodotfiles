@@ -253,6 +253,10 @@ let g:netrw_altv = 1
 "   above.
 let g:netrw_alto = 1
 
+" - help 'visualbell'
+" - Makes vim flash its screen instead of beeping.
+set visualbell
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
