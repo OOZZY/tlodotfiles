@@ -542,6 +542,31 @@ if has("autocmd")
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" commands
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" - help E174
+" - help :command-nargs
+" - help @/
+" - help escape()
+" - help execute()
+" - help input()
+" - define a command named SearchForExactString that takes only one argument
+"   (-nargs=1)
+" - @/ refers to the search pattern register (the / register)
+" - <args> will be replaced with whatever was input as the argument to the
+"   command
+" - the escape() call here will escape (with a backslash) all occurrences of '\'
+"   in the input to the command
+" - execute() executes an input argument string as an Ex command and returns the
+"   output as a string
+" - input() prompts for input (text for the prompt is given as an argument) and
+"   returns whatever was input as a string
+command! -nargs=1 SearchForExactString let @/ = escape('<args>', '\')
+nmap <Leader>/
+  \ :execute(":SearchForExactString " . input('Search for exact string: '))<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gui-specific settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
