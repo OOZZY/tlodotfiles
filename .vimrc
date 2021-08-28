@@ -549,22 +549,37 @@ endif
 " - help :command-nargs
 " - help @/
 " - help escape()
-" - help execute()
-" - help input()
+" - help <args>
 " - define a command named SearchForExactString that takes only one argument
 "   (-nargs=1)
 " - @/ refers to the search pattern register (the / register)
-" - <args> will be replaced with whatever was input as the argument to the
-"   command
-" - the escape() call here will escape (with a backslash) all occurrences of '\'
-"   in the input to the command
+" - <args> will be replaced with the exact text that was input as the argument
+"   to the command
+" - the escape() call here will escape (with a backslash) all occurrences of
+"   '$', '*', '.', '[', '\', ']', '^', '~' in the string input as the first
+"   argument
+" - this command will work properly only if the argument is a syntactically
+"   valid string that is properly enclosed with single or double quotes
+command! -nargs=1 SearchForExactString let @/ = escape(<args>, '$*.[\]^~')
+
+" - help execute()
+" - help substitute()
+" - help input()
 " - execute() executes an input argument string as an Ex command and returns the
 "   output as a string
+" - the substitute() call here will replace all occurrences of "'" with "''" in
+"   the string input as first argument
 " - input() prompts for input (text for the prompt is given as an argument) and
 "   returns whatever was input as a string
-command! -nargs=1 SearchForExactString let @/ = escape('<args>', '\')
+" - this transforms whatever text the user input into a syntactically valid
+"   single quote string where any single quotes in the user input are properly
+"   escaped, then passes that string to the SearchForExactString command
 nmap <Leader>/
-  \ :execute(":SearchForExactString " . input('Search for exact string: '))<CR>
+  \ :execute(
+  \   ":SearchForExactString '"
+  \   . substitute(input('Search for exact string: '), "'", "''", 'g')
+  \   .  "'"
+  \ )<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gui-specific settings
