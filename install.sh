@@ -44,6 +44,10 @@ assemble_config_file .gitconfig "${HOME}/.gitconfig"
 
 OS="$(uname -o)"
 
+if [ "${OS}" = "GNU/Linux" ]; then
+  cp -R ubuntu-20.04/.conan "${HOME}"
+fi
+
 if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" ]; then
   backup_config_file "${HOME}/.bash_logout"
   assemble_config_file .bash_logout "${HOME}/.bash_logout"
@@ -52,6 +56,8 @@ if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" ]; then
 
   mkdir -p "${USERPROFILE}/vimfiles"
   cp -R .vim/* "${USERPROFILE}/vimfiles"
+
+  cp -R windows-10/.conan "${USERPROFILE}"
 fi
 
 if [ "${OS}" = "FreeBSD" ]; then
