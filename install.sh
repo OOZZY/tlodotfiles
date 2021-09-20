@@ -61,5 +61,5 @@ if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" ]; then
 fi
 
 if [ "${OS}" = "FreeBSD" ]; then
-  cat .gitconfig-freebsd >> "${HOME}/.gitconfig"
+  cat freebsd/.gitconfig >> "${HOME}/.gitconfig"
 fi
