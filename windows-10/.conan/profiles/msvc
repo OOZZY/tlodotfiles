@@ -5,10 +5,10 @@ arch=x86_64
 arch_build=x86_64
 compiler=msvc
 compiler.version=19.2
-build_type=Debug
 compiler.runtime=dynamic
 compiler.runtime_type=Debug
 compiler.cppstd=20
+build_type=Debug
 [conf]
 tools.microsoft.msbuild:vs_version = 16
 [options]
