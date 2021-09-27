@@ -48,10 +48,12 @@ if [ "${OS}" = "GNU/Linux" ]; then
   cp -R ubuntu-20.04/.conan "${HOME}"
 fi
 
-if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" ]; then
+if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" -o "${OS}" = "FreeBSD" ]; then
   backup_config_file "${HOME}/.bash_logout"
   assemble_config_file .bash_logout "${HOME}/.bash_logout"
+fi
 
+if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" ]; then
   cp .vimrc "${USERPROFILE}/_vimrc"
 
   mkdir -p "${USERPROFILE}/vimfiles"

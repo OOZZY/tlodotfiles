@@ -41,8 +41,8 @@ if [ "${OS}" = "Cygwin" ]; then
   export DISPLAY=:0.0
 fi
 
-if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" ]; then
-  if [ -z "$(ps aux | grep ssh-agent)" ]; then
+if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" -o "${OS}" = "FreeBSD" ]; then
+  if [ -z "$(ps aux | grep -v grep | grep ssh-agent)" ]; then
     # - "ssh-agent -s" prints to stdout the Bourne shell commands to execute to
     #   setup an agent
     # - "ssh-add" won't work if ssh-agent isn't running, so run ssh-agent
