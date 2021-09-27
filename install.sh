@@ -63,7 +63,5 @@ if [ "${OS}" = "Cygwin" -o "${OS}" = "Msys" ]; then
 fi
 
 if [ "${OS}" = "FreeBSD" ]; then
-  cat freebsd/.gitconfig >> "${HOME}/.gitconfig"
-
   cp -R freebsd/.conan "${HOME}"
 fi

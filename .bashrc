@@ -60,7 +60,9 @@ if [ "${OS}" = "FreeBSD" ]; then
   [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
     source /usr/local/share/bash-completion/bash_completion.sh
 
-  # let man use the less pager
+  # - let man use the less pager
+  # - in FreeBSD 13.0, man defaults to `less -sR` (if color support is enabled)
+  #   or `less -s`
   alias man='man -P "less -sRi"'
 
   # for freebsd's ls, -G enables colorized output
